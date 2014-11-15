@@ -1,7 +1,21 @@
-Welcome <%= @name %>!<br>
+<% if @name == ""%>
+Welcome!
+ <br>
+<% else %>
+Welcome <%= @name %>!
+<br>
+<%end%>
 
 Pick one: <br>
+<form action="/result" method="post">
+  <input type="submit" value="rock" name = "item">
+</form>
 
-<a href='/result?selected=rock'>Rock</a>
-<a href='/result?selected=paper'>Paper</a>
-<a href='/resultselected=scissors'>Scissors</a>
+<form action="/result" method="post">
+  <input type="submit" value="paper" name = "item">
+</form>
+
+<form action="/result" method= "post">
+  <input type="submit" value="scissor" name= "item">
+</form>
+

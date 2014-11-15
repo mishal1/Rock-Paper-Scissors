@@ -1,3 +1,4 @@
+
 Given(/^I am on the homepage$/) do
  visit("/")
 end
@@ -18,14 +19,16 @@ Then(/^I follow "(.*?)"$/) do |button|
   click_on(button)
 end
 
+When(/^I have set up a game$/) do
+	step 'I am on the homepage'
+	step 'I enter a name'
+	step 'I choose to play against the "Computer"'
+	step 'I follow "Play game"'
+end
 
+Then(/^I choose the "(.*?)" button$/) do |button|
+  click_on(button)
+end
 
-# Given(/^I click the "(.*?)" link$/) do |link|
-#   click_link(link)
-# end
-
-# Then(/^I should see "(.*?)"$/) do |text|
-#   expect(page).to have_content text
-# end
 
 #ADD LAYOUT file to title name of the game

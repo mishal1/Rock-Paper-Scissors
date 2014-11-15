@@ -5,7 +5,7 @@ Feature: Playing rock, paper, scissors
 
 Scenario: A user goes to the homepage
 	Given I am on the homepage
-	And I see "Rock, Paper, Scissors "
+	And I see "Rock, Paper, Scissors"
 	When I enter a name
 	When I choose to play against the "Computer"
 	Then I follow "Play game"
@@ -18,6 +18,33 @@ Scenario: A user sees a welcome message
  	Then I see "Welcome Mishal"
 
 Scenario: A user picks a rock option
-	Given I am on the choice page
-	When I choose "Rock" button
-	Then I see "The winner is"
+	When I have set up a game
+	Then I choose the "rock" button
+
+Scenario: A user picks a paper option
+	When I have set up a game
+	Then I choose the "paper" button
+
+Scenario: A user picks a scissor option
+	When I have set up a game
+	Then I choose the "scissor" button
+	
+
+Scenario: A user wins the game
+	When I have set up a game
+	Then I choose the "paper" button
+	Then I see "The winner is Mishal, with paper"
+
+Scenario: A user loses the game
+	When I have set up a game
+	Then I choose the "scissor" button
+	Then I see "The winner is the Computer, with rock"
+
+Scenario: A user draws
+	When I have set up a game
+	Then I choose the "rock" button
+	Then I see "It was a draw and you both picked rock"
+
+Scenario: Another player can play the game
+	
+

@@ -6,5 +6,6 @@ class RockPaperScissorsGame
 		rules[option1.to_sym].to_s == option2 ? option1 : option2
 	end
 
-end
 
+
+end
