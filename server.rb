@@ -31,3 +31,5 @@ class RockPaperScissors < Sinatra::Base
 end
 
 #HARD CODED
+#Redirect back to play again
+#Redirects you to error page if no name is chosen
