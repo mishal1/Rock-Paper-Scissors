@@ -44,7 +44,7 @@ Scenario: A user draws
 	When I have set up a game
 	Then I choose the "rock" button
 	Then I see "It was a draw and you both picked rock"
-
-Scenario: Another player can play the game
+	Then I choose the "Play again" button
+	Then I am on the homepage
 	
 
