@@ -29,6 +29,3 @@ end
 Then(/^I choose the "(.*?)" button$/) do |button|
   click_on(button)
 end
-
-
-#ADD LAYOUT file to title name of the game

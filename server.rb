@@ -6,6 +6,8 @@ class RockPaperScissors < Sinatra::Base
 
   enable :sessions
 
+  use Rack::Flash
+
   get '/' do
   	params[:name]
     erb :homepage
@@ -13,8 +15,8 @@ class RockPaperScissors < Sinatra::Base
 
   post '/choice' do
     if params[:name]==""
-      flash[notice]="Please enter a name"
-      redirect to('/')
+      flash[:notice]="Please enter a name!"
+      redirect('/')
     else
     	@name = params[:name]
     	session[:name] = @name
