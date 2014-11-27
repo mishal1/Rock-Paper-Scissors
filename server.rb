@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'rack-flash'
+require_relative './lib/player.rb'
 require_relative './lib/rock_paper_scissors'
 
 class RockPaperScissors < Sinatra::Base
@@ -18,8 +19,8 @@ class RockPaperScissors < Sinatra::Base
       flash[:notice]="Please enter a name!"
       redirect('/')
     else
-    	@name = params[:name]
-    	session[:name] = @name
+    	player = Player.new(params[:name])
+    	@name = session[:name] = player.name
     	erb :choice
     end
   end  
@@ -29,7 +30,6 @@ class RockPaperScissors < Sinatra::Base
    	player_name = session[:name]
    	@result = RockPaperScissorsGame.fight(@player_choice, 'rock')
    	@winner = @result == @player_choice ? player_name : 'the Computer'
-   	# player_name = GAME.winner.name
   	erb :result
   end
 

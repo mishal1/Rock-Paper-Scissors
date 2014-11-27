@@ -8,7 +8,10 @@ class Player
 	end
 
 	def choose(option)
+		raise "Please choose a valid choice" if !@options.include?(option)
 		@choice = option
 	end
+
+	def rps_fight
 
 end

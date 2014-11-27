@@ -11,9 +11,7 @@ describe RockPaperScissorsGame do
 
 	it "knows there is a draw" do
 		expect(RockPaperScissorsGame.fight("rock","rock")).to eq "draw"
-	end
-
-	
+	end	
 	
 #test that computer randomly selects a choice
 	
