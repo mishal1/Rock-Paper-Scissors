@@ -58,4 +58,5 @@ Scenario: Another player can play the game
 	And I enter a name
 	And I choose to play against the "Another player"
 	Then I follow "Play game"
+	Then I see "Waiting for second player"
 

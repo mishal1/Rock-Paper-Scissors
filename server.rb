@@ -9,6 +9,8 @@ class RockPaperScissors < Sinatra::Base
 
   use Rack::Flash
 
+  GAME= RockPaperScissorsGame.new
+
   get '/' do
   	params[:name]
     erb :homepage
@@ -18,17 +20,19 @@ class RockPaperScissors < Sinatra::Base
     if params[:name]==""
       flash[:notice]="Please enter a name!"
       redirect('/')
-    else
+    elsif params[:Opponent]=="Computer"
     	player = Player.new(params[:name])
     	@name = session[:name] = player.name
     	erb :choice
+    else
+      erb :waitingpage
     end
   end  
 
   post '/result' do
     @player_choice = params[:item]
    	player_name = session[:name]
-   	@result = RockPaperScissorsGame.fight(@player_choice, 'rock')
+   	@result = GAME.fight(@player_choice, 'rock')
    	@winner = @result == @player_choice ? player_name : 'the Computer'
   	erb :result
   end
