@@ -45,6 +45,14 @@ Scenario: A user draws
 	Then I choose the "rock" button
 	Then I see "It was a draw and you both picked rock"
 
-Scenario: Another player can play the game
-	
+Scenario: There is an error message if the user doesn't enter their name
+	Given I am on the homepage
+	And I choose to play against the "Computer"
+	And I follow "Play game"
+	Then I see "Please enter a name" 
 
+Scenario: Another player can play the game
+	Given I am on the homepage
+	And I enter a name
+	And I choose to play against the "Another player"
+	Then I follow "Play game"
