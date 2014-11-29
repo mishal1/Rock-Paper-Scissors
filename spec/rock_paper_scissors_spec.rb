@@ -29,5 +29,15 @@ describe RockPaperScissorsGame do
 		3.times{game.add_player(player)}
 		expect(game.players.count).to eq(2)
 	end
+
+	it "game cannot start if there aren't enough players" do 
+		game.add_player(player)
+		expect(game.started?).to be(false)
+	end
+
+	it "can only start if there are two players" do
+		2.times{game.add_player(player)}
+		expect(game.started?).to be(true)
+	end
 	
 end

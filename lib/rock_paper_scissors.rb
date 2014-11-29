@@ -21,4 +21,8 @@ class RockPaperScissorsGame
 		players << player unless players.count == 2
 	end
 
+	def started?
+		players.count == 2
+	end
+
 end
