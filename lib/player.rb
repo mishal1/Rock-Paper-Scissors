@@ -12,6 +12,4 @@ class Player
 		@choice = option
 	end
 
-	def rps_fight
-
 end
