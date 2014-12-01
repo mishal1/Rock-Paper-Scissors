@@ -17,46 +17,42 @@ class RockPaperScissors < Sinatra::Base
     erb :homepage
   end
 
-  post '/choice' do
+  post '/game' do
     if params[:name]==""
       flash[:notice]="Please enter a name!"
       redirect('/')
-    elsif params[:Opponent]=="Computer"
-      session[:name] = params[:name]
-      redirect('/computerchoice')
-    else
-      session[:name] = params[:name]
-      redirect('/player_choice')
     end
+    params[:Opponent]=="Computer" ? @game = :single_player : @game = :two_player
+    
   end  
 
-  get '/computerchoice' do
-    player = Player.new(session[:name])
-    computer = Computer.new
-    GAME.add_player(player)
-    GAME.add_player(computer)
-    @name = session[:name]
-    erb :choice
-  end
+  # get '/computerchoice' do
+  #   player = Player.new(session[:name])
+  #   computer = Computer.new
+  #   GAME.add_player(player)
+  #   GAME.add_player(computer)
+  #   @name = session[:name]
+  #   erb :choice
+  # end
 
-  get '/player_choice' do
-    player = Player.new(session[:name])
-    GAME.add_player(player)
-    session[:me]=player.object_id
-    @player_count= GAME.players.count
-    # if @player_count !=2
-      erb :waitingpage
-    # else
-      
-    # end
-  end
+  # get '/playerschoice' do
+  #   player = Player.new(session[:name])
+  #   GAME.add_player(player)
+  #   session[:me]=player.object_id
+  #   @player_count= GAME.players.count
+  #   # if @player_count !=2
+  #     erb :waitingpage
+  #   # else
 
-  post '/result' do
-    @player_choice = params[:item]
-    @result = GAME.play(@player_choice, 'rock')
-    @winner = @result == @player_choice ? session[:name] : 'the Computer'
-    erb :result
-  end
+  #   # end
+  # end
+
+  # post '/result' do
+  #   @player_choice = params[:item]
+  #   @result = GAME.play(@player_choice, 'rock')
+  #   @winner = @result == @player_choice ? session[:name] : 'the Computer'
+  #   erb :result
+  # end
 
 end
 
