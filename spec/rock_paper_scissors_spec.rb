@@ -5,15 +5,15 @@ describe RockPaperScissorsGame do
 	let(:player) {double :player}
 
 	it "knows rock beats scissors" do
-		expect(game.fight("rock", "scissors")).to eq "rock"
+		expect(game.play("rock", "scissors")).to eq "rock"
 	end
 
 	it "knows paper beats rock" do
-		expect(game.fight("paper", "rock")).to eq "paper"
+		expect(game.play("paper", "rock")).to eq "paper"
 	end
 
 	it "knows there is a draw" do
-		expect(game.fight("rock","rock")).to eq "draw"
+		expect(game.play("rock","rock")).to eq "draw"
 	end	
 	
 	it "has no players when initialize" do

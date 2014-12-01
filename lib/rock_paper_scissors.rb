@@ -6,15 +6,14 @@ class RockPaperScissorsGame
 		@players =[]
 	end
 
-
-	def fight(option1, option2)
-		return "draw" if option1 == option2
-		rules= {:rock => :scissors, :scissors => :paper, :paper => :rock} 
-		rules[option1.to_sym].to_s == option2 ? option1 : option2
+	def rules
+		rules = {:rock => :scissors, :scissors => :paper, :paper => :rock}
 	end
 
-	def computer_choice
-		["rock", "paper", "scissors"].sample
+
+	def play(option1, option2)
+		return "draw" if option1 == option2 
+		rules[option1.to_sym].to_s == option2 ? option1 : option2
 	end
 
 	def add_player(player)
