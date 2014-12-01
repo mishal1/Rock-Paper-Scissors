@@ -1,13 +1,14 @@
 class Computer
 
-	attr_reader :choice
+	attr_reader :name
+	attr_accessor :choice
 
 	def initialize
 		@name = "Computer"
 	end
 
-	def choice
-		["rock", "paper", "scissors"].sample
+	def choose
+		@choice = ["rock", "paper", "scissors"].sample
 	end
 
 end

@@ -1,7 +1,7 @@
 <% unless @result == 'draw' %>
   <h3>The winner is <%= @winner %>, with <%= @result %></h3>
 <% else %>
-  <h3>It was a draw and you both picked <%= @player_choice %></h3>
+  <h3>It was a draw</h3>
 <% end %>
 
 <form action='/' method='get'>

@@ -13,7 +13,6 @@ class RockPaperScissors < Sinatra::Base
   GAME = RockPaperScissorsGame.new
 
   get '/' do
-  	params[:name]
     erb :homepage
   end
 
@@ -21,38 +20,45 @@ class RockPaperScissors < Sinatra::Base
     if params[:name]==""
       flash[:notice]="Please enter a name!"
       redirect('/')
+    else
+      session[:name] = params[:name]
+      params[:Opponent]=="Computer" ? @opponent = 'single_player' : @opponent= 'two_player'
+      redirect("/#{@opponent}")
     end
-    params[:Opponent]=="Computer" ? @game = :single_player : @game = :two_player
-    
   end  
 
-  # get '/computerchoice' do
-  #   player = Player.new(session[:name])
-  #   computer = Computer.new
-  #   GAME.add_player(player)
-  #   GAME.add_player(computer)
-  #   @name = session[:name]
-  #   erb :choice
-  # end
+  get '/single_player' do
+    @name = session[:name]
+    session[:player1]= Player.new(session[:name])
+    computer = Computer.new
+    # computer.choose
+    computer.choice = 'rock'
+    GAME.add_player(computer)
+    erb :choice
+  end
 
-  # get '/playerschoice' do
-  #   player = Player.new(session[:name])
-  #   GAME.add_player(player)
-  #   session[:me]=player.object_id
-  #   @player_count= GAME.players.count
-  #   # if @player_count !=2
-  #     erb :waitingpage
-  #   # else
+  get '/two_player' do
+    player = session[:player1] = Player.new(session[:name])
+    GAME.add_player(player)
+    @player_count= GAME.players.count
+    if @player_count !=2
+      erb :waitingpage
+    else
+      erb :choice
+  end
 
-  #   # end
-  # end
-
-  # post '/result' do
-  #   @player_choice = params[:item]
-  #   @result = GAME.play(@player_choice, 'rock')
-  #   @winner = @result == @player_choice ? session[:name] : 'the Computer'
-  #   erb :result
-  # end
+  post '/result' do
+    # @player_count= GAME.players.count
+    # if @player_count !=2
+    #   erb :waitingpage
+    # else
+      session[:player1].choose(params[:item])
+      GAME.add_player(session[:player1])
+      @result = GAME.play
+      @winner = GAME.winner
+      erb :result
+    # end
+  end
 
 end
 
