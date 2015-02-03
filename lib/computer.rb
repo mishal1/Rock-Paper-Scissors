@@ -1,4 +1,4 @@
-class Player
+class Computer
 
   attr_accessor :options
   attr_reader :choice
@@ -7,9 +7,8 @@ class Player
     @options = ["rock", "paper", "scissors"]
   end
 
-  def picks(choice)
-    raise "Pick an exisiting option" if !@options.include?(choice)
-    @choice = choice
+  def pick
+    @choice = @options.sample
   end
 
 end
