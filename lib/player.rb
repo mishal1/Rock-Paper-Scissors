@@ -1,15 +1,9 @@
 class Player
 
-	attr_reader :name, :choice
+  attr_reader :choice
 
-	def initialize(name)
-		@name = name
-		@options= ["rock", "paper", "scissors"]
-	end
-
-	def choose(option)
-		raise "Please choose a valid choice" if !@options.include?(option)
-		@choice = option
-	end
+  def picks(choice)
+    @choice = choice
+  end
 
 end
