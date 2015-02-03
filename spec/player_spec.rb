@@ -34,4 +34,9 @@ describe Player do
     expect{player.picks("random")}.to raise_error(RuntimeError)
   end
 
+  it 'can set a name' do
+    player.name = 'Mishal'
+    expect(player.name).to eq 'Mishal'
+  end
+
 end

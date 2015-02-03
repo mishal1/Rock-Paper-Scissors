@@ -22,4 +22,8 @@ describe Computer do
     expect(computer.choice).to satisfy{possible_computer_choice}
   end
 
+  it 'should be able to read a name' do
+    expect(computer.name).to eq 'robot'
+  end
+
 end

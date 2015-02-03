@@ -1,6 +1,6 @@
 class Player
 
-  attr_accessor :options
+  attr_accessor :options, :name
   attr_reader :choice
 
   def initialize
