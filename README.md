@@ -1,6 +1,6 @@
 #Rock, Paper, Scissors
 
-Week 3 Challenge at Maker's Academy.
+Week 3 Challenge at Makers Academy.
 
 ##Instructions
 The task was to provide a Rock, Paper, Scissors game that can be played on the web with the following features:
